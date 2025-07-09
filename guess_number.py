@@ -29,13 +29,12 @@ class GuessNumberGame:
         if guess == self.__number:
             print(f'Отличная интуиция, {self.username}! Вы угадали число :)')
             return True
-        
+
         if guess < self.__number:
             print('Ваше число меньше того, что загадано.')
         else:
             print('Ваше число больше того, что загадано.')
         return False
-
 
     def game(self) -> None:
         self.__number = randint(self.MIN_NUM, self.MAX_NUM)
@@ -46,7 +45,7 @@ class GuessNumberGame:
             'Для выхода из текущей игры введите команду "stop"'
         )
         while True:
-            # Получаем пользовательский ввод, 
+            # Получаем пользовательский ввод,
             # отрезаем лишние пробелы и переводим в нижний регистр.
             user_input = input('Введите число или команду: ').strip().lower()
 
@@ -59,14 +58,13 @@ class GuessNumberGame:
                     self.get_right_answer()
                 case _:
                     try:
-                        guess = int(user_input)                
+                        guess = int(user_input)
                     except ValueError:
                         print(UNKNOWN_COMMAND)
                         continue
 
                     if self.check_number(guess):
-                        break          
-
+                        break
 
     def get_username(self) -> None:
         self.username = input('Представьтесь, пожалуйста, как Вас зовут?\n').strip()
@@ -79,7 +77,7 @@ class GuessNumberGame:
             print(f'\n{self.username}, добро пожаловать в игру!')
 
 
-    def guess_number(self) -> None:        
+    def guess_number(self) -> None:
         self.get_username()
         self.start_time = dt.now()
         # Счётчик игр в текущей сессии.
